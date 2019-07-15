@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     }
     Integer a = 6;
     int b = a;
-
+//function xuyanction
     public static int bigger() {
         for (int i = 0; i<4; i++){
             int n = (int) (Math.random() * 10);
