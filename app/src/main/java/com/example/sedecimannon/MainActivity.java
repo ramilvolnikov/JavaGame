@@ -13,15 +13,16 @@ public class MainActivity extends AppCompatActivity {
     }
     Integer a = 6;
     int b = a;
+
 //function xuyanction
     public static int bigger() {
+        int k = 0;
         for (int i = 0; i<4; i++){
             int n = (int) (Math.random() * 10);
-            int k = 0;
             if (n > k) {
                 k = n;
             }
-            return k;
         }
+        return k;
     }
 }
