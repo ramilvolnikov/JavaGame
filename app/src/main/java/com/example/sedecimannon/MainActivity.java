@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     int b = a;
 
     public static int bigger() {
-        for (int i = 1, i<11, i++){
+        for (int i = 0; i<4; i++){
             int n = (int) (Math.random() * 10);
             int k = 0;
             if (n > k) {
