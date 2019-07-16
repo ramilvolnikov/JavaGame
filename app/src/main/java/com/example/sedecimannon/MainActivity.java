@@ -7,11 +7,12 @@ import android.util.Log;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+    private TextView testTextView;
+    private TextView TextView2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try{
-            String bin10 = DecToBin(10);
+            String bin10 = DecToBin(8);
             String bin0 = DecToBin(0);
             String binm1 = DecToBin(-1);
         }
@@ -19,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         new Thread(new Runnable() {
             public void run() {
                 for(;;)
@@ -35,15 +35,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
 //Expression generation and text assignment
-    public void ExprtoText(String s){
-        final TextView testTextView = (TextView) findViewById(R.id.textView);
+    private void ExprtoText(String s){
+        testTextView = (TextView) findViewById(R.id.textView);
         testTextView.setTag(1);
         testTextView.setText(s);
+        TextView2 = (TextView) findViewById(R.id.textView2);
+        Integer textInTV2 = Integer.parseInt(TextView2.getText().toString());
+        TextView2.setText(Integer.toString(textInTV2 + 1));
     }
 
 //Decimal to binary system
 //TODO: rewrite like toBinaryString
-    protected String DecToBin (Integer dec){
+    private String DecToBin (Integer dec){
         if (dec == 0) return "0";
         if (dec < 0) Log.e("ERROR", "Number less than zero");
         String bin = "";
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             while ( dec > 0){
                 bin += Integer.toString(dec % 2);
                 //dec /= 0;
-                dec/=2;
+                dec /= 2;
             }
         }catch(ArithmeticException e){Log.e("ERROR", String.valueOf(e));}
         Log.d("DecToBin", new StringBuilder(bin).reverse().toString());
@@ -59,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 //TODO:
-    protected String DecToBin (String dec){
+    private String DecToBin (String dec){
         return "-1";
     }
 }
