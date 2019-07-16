@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +19,26 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        new Thread(new Runnable() {
+            public void run() {
+                for(;;)
+                try {
+                    Thread.sleep(1000);
+                    Integer i = (int) (Math.random() * 50 - 10);
+                    ExprtoText(Integer.toString(i));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+//Expression generation and text assignment
+    public void ExprtoText(String s){
+        final TextView testTextView = (TextView) findViewById(R.id.textView);
+        testTextView.setTag(1);
+        testTextView.setText(s);
     }
 
 //Decimal to binary system
