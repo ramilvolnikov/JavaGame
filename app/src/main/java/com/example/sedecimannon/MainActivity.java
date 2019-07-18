@@ -15,23 +15,27 @@ public class MainActivity extends AppCompatActivity {
             String bin10 = DecToBin(8);
             String bin0 = DecToBin(0);
             String binm1 = DecToBin(-1);
+            String sbin10 = DecToBin("8");
+            String sbin0 = DecToBin("0");
+            String sbinm1 = DecToBin("-1");
         }
         catch (ArithmeticException e){Log.e("ERROR", String.valueOf(e));}
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new Thread(new Runnable() {
+        Thread myThread = new Thread(new Runnable() {
             public void run() {
-                for(;;)
-                try {
-                    Thread.sleep(1000);
+                for(;;){
                     Integer i = (int) (Math.random() * 50 - 10);
                     ExprtoText(Integer.toString(i));
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
-        }).start();
+        });
+        myThread.start();
     }
 
 //Expression generation and text assignment
@@ -45,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 //Decimal to binary system
-//TODO: rewrite like toBinaryString
+// TODO: rewrite like toBinaryString
     private String DecToBin (Integer dec){
         if (dec == 0) return "0";
         if (dec < 0) Log.e("ERROR", "Number less than zero");
@@ -53,11 +57,10 @@ public class MainActivity extends AppCompatActivity {
         try{
             while ( dec > 0){
                 bin += Integer.toString(dec % 2);
-                //dec /= 0;
                 dec /= 2;
             }
         }catch(ArithmeticException e){Log.e("ERROR", String.valueOf(e));}
-        Log.d("DecToBin", new StringBuilder(bin).reverse().toString());
+        Log.d("DecToBin", new StringBuilder(bin).reverse().toString() + " number: " + dec);
         return  new StringBuilder(bin).reverse().toString();
     }
 

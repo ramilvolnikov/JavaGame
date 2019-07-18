@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!---TODO rewrite to better colors and maybe set another shape-->
+<shape
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:startColor="#000000"
+        android:centerColor="#5b5b5b"
+        android:endColor="@color/colorAccent"
+        android:angle="45" />
+
+</shape>
