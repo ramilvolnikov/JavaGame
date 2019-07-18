@@ -2,8 +2,10 @@ package com.example.sedecimannon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         myThread.start();
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linear_layout);
+
+        AnimationDrawable animationDrawable = (AnimationDrawable) linearLayout.getBackground();
+
+        animationDrawable.setEnterFadeDuration(2500);
+        animationDrawable.setExitFadeDuration(5000);
+
+        animationDrawable.start();
     }
 
 //Expression generation and text assignment

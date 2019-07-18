@@ -6,8 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <gradient
-        android:startColor="@color/colorSchemePrimary"
-        android:centerColor="@color/colorSchemeRed"
+        android:startColor="@color/colorSchemeRed"
         android:endColor="@color/colorSchemeAzure"
         android:angle="45" />
 
