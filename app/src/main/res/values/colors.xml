@@ -3,4 +3,11 @@
     <color name="colorPrimary">#84F75F</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#D81B60</color>
+
+    <!--Maybe main color scheme -->
+    <color name="colorSchemePrimary">#FFD700</color>
+    <color name="colorSchemeGray">#808080</color>
+    <color name="colorSchemeBrown">#A52A2A</color>
+    <color name="colorSchemeAzure">#007FFF</color>
+    <color name="colorSchemeRed">#FF0000</color>
 </resources>
