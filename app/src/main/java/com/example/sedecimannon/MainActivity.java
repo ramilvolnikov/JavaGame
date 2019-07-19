@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,26 +25,31 @@ public class MainActivity extends AppCompatActivity {
         catch (ArithmeticException e){Log.e("ERROR", String.valueOf(e));}
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Thread myThread = new Thread(new Runnable() {
-            public void run() {
-                for(;;){
-                    Integer i = (int) (Math.random() * 50 - 10);
-                    ExprtoText(Integer.toString(i));
+
+//TODO: rewrite
+        Thread t = new Thread() {
+            @Override
+            public void run(){
+                 {
                     try {
                         Thread.sleep(1000);
+
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
+                Integer i = (int) (Math.random() * 50 - 10);
+                ExprtoText(Integer.toString(i));
             }
-        });
-        myThread.start();
+        };
+        t.start();
+//TODO: create for this single function
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linear_layout);
 
         AnimationDrawable animationDrawable = (AnimationDrawable) linearLayout.getBackground();
 
-        animationDrawable.setEnterFadeDuration(2500);
-        animationDrawable.setExitFadeDuration(5000);
+        animationDrawable.setEnterFadeDuration(1000);
+        animationDrawable.setExitFadeDuration(2000);
 
         animationDrawable.start();
     }

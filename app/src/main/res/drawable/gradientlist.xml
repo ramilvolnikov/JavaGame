@@ -3,10 +3,10 @@
 
     <item
         android:drawable="@drawable/gradient1"
-        android:duration="5000"/>
+        android:duration="1000"/>
 
     <item
         android:drawable="@drawable/gradient2"
-        android:duration="5000"/>
+        android:duration="1000"/>
 
 </animation-list>
