@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     private TextView testTextView;
     private TextView TextView2;
+    private Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try{
@@ -25,23 +27,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//TODO: rewrite for android 8 and less
-        Thread t = new Thread() {
-            @Override
-            public void run(){
-                 {
-                    try {
-                        Thread.sleep(1000);
-
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                Integer i = (int) (Math.random() * 50 - 10);
-                ExprtoText(Integer.toString(i));
-            }
-        };
-        t.start();
+        Thread thread = new Thread(runnable);
+        thread.start();
 
 //TODO: create for this single function.
 // Maybe set local variable for time and connect with gradientlists
@@ -50,10 +37,31 @@ public class MainActivity extends AppCompatActivity {
         AnimationDrawable animationDrawable = (AnimationDrawable) linearLayout.getBackground();
 
         animationDrawable.setEnterFadeDuration(1000);
-        animationDrawable.setExitFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(3500);
 
         animationDrawable.start();
     }
+
+    //For counter and changer expro
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            // имитация длительного процесса
+            for (; ; ) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ExprtoText(Integer.toString((int) (Math.random() * 50 - 10)));
+                    }
+                });
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    };
 
 //Expression generation and text assignment
     private void ExprtoText(String s){
