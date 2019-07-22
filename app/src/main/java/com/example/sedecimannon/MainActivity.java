@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//TODO: rewrite
+//TODO: rewrite for android 8 and less
         Thread t = new Thread() {
             @Override
             public void run(){
@@ -43,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         t.start();
-//TODO: create for this single function
+
+//TODO: create for this single function.
+// Maybe set local variable for time and connect with gradientlists
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linear_layout);
 
         AnimationDrawable animationDrawable = (AnimationDrawable) linearLayout.getBackground();
