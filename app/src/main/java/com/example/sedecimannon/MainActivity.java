@@ -9,7 +9,7 @@ import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity<shex> extends AppCompatActivity {
     private TextView testTextView;
     private TextView TextView2;
     private Handler handler;
@@ -22,6 +22,20 @@ public class MainActivity extends AppCompatActivity {
             String sbin10 = DecToBin("8");
             String sbin0 = DecToBin("0");
             String sbinm1 = DecToBin("-1");
+
+            String octal10 = DecToOctal(8);
+            String octal0 = DecToOctal(0);
+            String octalm1 = DecToOctal(-1);
+            String soctal10 = DecToOctal("8");
+            String soctal0 = DecToOctal("0");
+            String soctalm1 = DecToOctal("-1");
+
+            String hex10 = DecToHex(8);
+            String hex0 = DecToHex(0);
+            String hexm1 = DecToHex(-1);
+            String shex10 = DecToHex("8");
+            String shex0 = DecToHex("0");
+            String shexm1 = DecToHex("-1");
         }
         catch (ArithmeticException e){Log.e("ERROR", String.valueOf(e));}
         super.onCreate(savedInstanceState);
@@ -89,8 +103,55 @@ public class MainActivity extends AppCompatActivity {
         return  new StringBuilder(bin).reverse().toString();
     }
 
-//TODO:
+    private String DecToOctal (Integer dec){
+        if (dec == 0) return "0";
+        if (dec < 0) Log.e("ERROR", "Number less than zero");
+        String octal = "";
+        try{
+            while ( dec > 0){
+                octal += Integer.toString(dec % 8);
+                dec /= 8;
+            }
+        }catch(ArithmeticException e){Log.e("ERROR", String.valueOf(e));}
+        Log.d("DecToOctal", new StringBuilder(octal).reverse().toString() + " number: " + dec);
+        return  new StringBuilder(octal).reverse().toString();
+    }
+
+    private String DecToHex (Integer dec){
+        if (dec == 0) return "0";
+        if (dec < 0) Log.e("ERROR", "Number less than zero");
+        String hex = "";
+        try{
+            while ( dec > 0){
+                hex += Integer.toString(dec % 16);
+                if ((new Integer(hex))>9) {
+                    hex - strhex[Integer.parseInt(hex)];
+                }
+                dec /= 16;
+            }
+        }catch(ArithmeticException e){Log.e("ERROR", String.valueOf(e));}
+        Log.d("DecToHex", new StringBuilder(hex).reverse().toString() + " number: " + dec);
+        return  new StringBuilder(hex).reverse().toString();
+    }
+
+    //TODO:
+
+    String[] strhex = new String[16];
+    strhex[10] = "A";
+    strhex[10] = "B";
+    strhex[10] = "C";
+    strhex[10] = "D";
+    strhex[10] = "E";
+    strhex[10] = "F";
+
     private String DecToBin (String dec){
         return "-1";
     }
+    private String DecToOctal (String dec){
+        return "-1";
+    }
+    private String DecToHex (String dec){
+        return "-1";
+    }
+
 }
