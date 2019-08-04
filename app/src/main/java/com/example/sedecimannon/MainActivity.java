@@ -2,16 +2,20 @@ package com.example.sedecimannon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MainActivity<shex> extends AppCompatActivity {
+public class MainActivity extends Activity {
     private TextView testTextView;
     private TextView TextView2;
+    private Button b1;
+
     private Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,12 +83,17 @@ public class MainActivity<shex> extends AppCompatActivity {
 
 //Expression generation and text assignment
     private void ExprtoText(String s){
+        String d;
+        d = DecToBin(s);
         testTextView = (TextView) findViewById(R.id.textView);
         testTextView.setTag(1);
         testTextView.setText(s);
         TextView2 = (TextView) findViewById(R.id.textView2);
         Integer textInTV2 = Integer.parseInt(TextView2.getText().toString());
         TextView2.setText(Integer.toString(textInTV2 + 1));
+        b1 = (Button) findViewById(R.id.button1);
+        b1.setTag(1);
+        b1.setText(d);
     }
 
 //Decimal to binary system
@@ -125,7 +134,7 @@ public class MainActivity<shex> extends AppCompatActivity {
             while ( dec > 0){
                 hex += Integer.toString(dec % 16);
                 if ((new Integer(hex))>9) {
-                    hex - strhex[Integer.parseInt(hex)];
+                    hex = strhex[Integer.parseInt(hex)];
                 }
                 dec /= 16;
             }
@@ -136,14 +145,14 @@ public class MainActivity<shex> extends AppCompatActivity {
 
     //TODO:
 
-    String[] strhex = new String[16];
-    strhex[10] = "A";
-    strhex[10] = "B";
-    strhex[10] = "C";
-    strhex[10] = "D";
-    strhex[10] = "E";
-    strhex[10] = "F";
-
+    public String[] strhex = new String[16];{
+        strhex[10] = "A";
+        strhex[11] = "B";
+        strhex[12] = "C";
+        strhex[13] = "D";
+        strhex[14] = "E";
+        strhex[15] = "F";
+    }
     private String DecToBin (String dec){
         return "-1";
     }
