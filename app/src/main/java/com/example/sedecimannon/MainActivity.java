@@ -15,7 +15,9 @@ public class MainActivity extends Activity {
     private TextView testTextView;
     private TextView TextView2;
     private Button b1;
-
+    private Button b2;
+    private Button b3;
+    private Button b4;
     private Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +71,8 @@ public class MainActivity extends Activity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        ExprtoText(Integer.toString((int) (Math.random() * 50 - 10)));
+                     ExprtoText(Integer.toString((int) (Math.random() * 50 - 10)));
+
                     }
                 });
                 try {
@@ -83,17 +86,28 @@ public class MainActivity extends Activity {
 
 //Expression generation and text assignment
     private void ExprtoText(String s){
-        String d;
-        d = DecToBin(s);
         testTextView = (TextView) findViewById(R.id.textView);
         testTextView.setTag(1);
         testTextView.setText(s);
         TextView2 = (TextView) findViewById(R.id.textView2);
         Integer textInTV2 = Integer.parseInt(TextView2.getText().toString());
         TextView2.setText(Integer.toString(textInTV2 + 1));
+        String d;
+
+        d = (DecToBin(s));
         b1 = (Button) findViewById(R.id.button1);
         b1.setTag(1);
         b1.setText(d);
+
+        d = (DecToOctal(s));
+        b2 = (Button) findViewById(R.id.button2);
+        b2.setTag(1);
+        b2.setText(d);
+
+        d = (DecToHex(s));
+        b3 = (Button) findViewById(R.id.button3);
+        b3.setTag(1);
+        b3.setText(d);
     }
 
 //Decimal to binary system
