@@ -15,7 +15,7 @@
         android:background="@drawable/gradientlist"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteY="60dp">
         <!--Content goes here-->
 
     </LinearLayout>
