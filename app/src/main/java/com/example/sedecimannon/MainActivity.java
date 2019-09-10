@@ -79,11 +79,10 @@ public class MainActivity extends Activity {
         //b2.setTag(1);
         b2.setText(d);
 
-        // Do first good DecToHex
-        //d = (DecToHex(is));
-        //Button b3 = (Button)findViewById(R.id.button3);
+        d = (DecToHex(is));
+        Button b3 = (Button)findViewById(R.id.button3);
         //b3.setTag(1);
-        //b3.setText(d);
+        b3.setText(d);
     }
 // TODO: Add description
 
@@ -122,27 +121,12 @@ public class MainActivity extends Activity {
         if (dec < 0) Log.e("ERROR", "Number less than zero");
         String hex = "";
         try{
-            while ( dec > 0){
-                hex += Integer.toString(dec % 16);
-                if ((new Integer(hex))>9) {
-                    hex = strhex[Integer.parseInt(hex)];
-                }
-                dec /= 16;
-            }
+           // while ( dec > 0) {
+                hex = Integer.toHexString(dec);
+           // }
         }catch(ArithmeticException e){Log.e("ERROR", String.valueOf(e));}
-        Log.d("DecToHex", new StringBuilder(hex).reverse().toString() + " number: " + dec);
-        return  new StringBuilder(hex).reverse().toString();
-    }
-
-
-
-    public String[] strhex = new String[16];{
-        strhex[10] = "A";
-        strhex[11] = "B";
-        strhex[12] = "C";
-        strhex[13] = "D";
-        strhex[14] = "E";
-        strhex[15] = "F";
+        Log.d("DecToHex", new StringBuilder(hex).toString() + " number: " + dec);
+        return  new StringBuilder(hex).toString();
     }
 
 
