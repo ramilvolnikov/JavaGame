@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                     ExprtoText(Integer.toString((int) (Math.random() * 50 - 10)));
+                     ExprtoText(Integer.toString((int) (Math.random() * 100)));
                     }
                 });
                 try {
@@ -84,46 +84,50 @@ public class MainActivity extends Activity {
         //b3.setTag(1);
         b3.setText(d);
     }
-// TODO: Add description
+
 
 //Decimal to binary system
-// TODO: rewrite like toBinaryString
+
     private String DecToBin (Integer dec){
         if (dec == 0) return "0";
         if (dec < 0) Log.e("ERROR", "Number less than zero");
         String bin = "";
         try{
-            while ( dec > 0){
-                bin += Integer.toString(dec % 2);
-                dec /= 2;
+            if ( dec > 0) {
+                bin = Integer.toBinaryString(dec);
             }
         }catch(ArithmeticException e){Log.e("ERROR", String.valueOf(e));}
-        Log.d("DecToBin", new StringBuilder(bin).reverse().toString() + " number: " + dec);
-        return  new StringBuilder(bin).reverse().toString();
+        Log.d("DecToBin", new StringBuilder(bin).toString() + " number: " + bin);
+        return  new StringBuilder(bin).toString();
     }
+
+
+// Decimal to octal system
 
     private String DecToOctal (Integer dec){
         if (dec == 0) return "0";
         if (dec < 0) Log.e("ERROR", "Number less than zero");
         String octal = "";
         try{
-            while ( dec > 0){
-                octal += Integer.toString(dec % 8);
-                dec /= 8;
+            if ( dec > 0) {
+                octal = Integer.toOctalString(dec);
             }
         }catch(ArithmeticException e){Log.e("ERROR", String.valueOf(e));}
-        Log.d("DecToOctal", new StringBuilder(octal).reverse().toString() + " number: " + dec);
-        return  new StringBuilder(octal).reverse().toString();
+        Log.d("DecToBin", new StringBuilder(octal).toString() + " number: " + octal);
+        return  new StringBuilder(octal).toString();
     }
-    // TODO: REWRITE!!!!
+
+
+//Decimal to hex system
+
     private String DecToHex (Integer dec){
         if (dec == 0) return "0";
         if (dec < 0) Log.e("ERROR", "Number less than zero");
         String hex = "";
         try{
-           // while ( dec > 0) {
+            if ( dec > 0) {
                 hex = Integer.toHexString(dec);
-           // }
+            }
         }catch(ArithmeticException e){Log.e("ERROR", String.valueOf(e));}
         Log.d("DecToHex", new StringBuilder(hex).toString() + " number: " + dec);
         return  new StringBuilder(hex).toString();
@@ -131,6 +135,7 @@ public class MainActivity extends Activity {
 
 
     //TODO: DO IT!!!!!!!!!!!!!
+    // WTF? WHAT SHOULD I DO?
     private String DecToBin (String dec){
         return "-1";
     }
