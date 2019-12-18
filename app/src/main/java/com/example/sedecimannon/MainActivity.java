@@ -62,6 +62,7 @@ public class MainActivity extends Activity {
     };
 
     int RAND;
+    Integer t2;
 //Expression generation and text assignment
     private void ExprtoText(String s){
         testTextView = (TextView) findViewById(R.id.textView);
@@ -69,7 +70,8 @@ public class MainActivity extends Activity {
         testTextView.setText(s);
         TextView2 = (TextView) findViewById(R.id.textView2);
         Integer textInTV2 = Integer.parseInt(TextView2.getText().toString());
-        TextView2.setText(Integer.toString(textInTV2 + 1));
+        t2 = textInTV2;
+        //TextView2.setText(Integer.toString(textInTV2 + 1));
         String d;
         final Random random = new Random();
         int rand = random.nextInt(3) + 1;
@@ -161,31 +163,50 @@ public class MainActivity extends Activity {
 
     public void onClick1(View v)
     {
-        if (RAND == 1)
+        if ((RAND == 1) && (testTextView.getText()!="TRUE!") && (testTextView.getText()!="FALSE!"))
         {
             testTextView.setText("TRUE!");
+            t2++;
+            TextView2.setText(Integer.toString(t2));
         }else {
+            if ((RAND!=1)&& (testTextView.getText()!="TRUE!") && (testTextView.getText()!="FALSE!")) {
             testTextView.setText("FALSE!");
+            TextView2.setText("0");
+            }
         }
+
     }
 
     public void onClick2(View v)
     {
-        if (RAND == 2)
+        if ((RAND == 2) && (testTextView.getText()!="TRUE!") && (testTextView.getText()!="FALSE!"))
         {
             testTextView.setText("TRUE!");
+            t2++;
+            TextView2.setText(Integer.toString(t2));
         }else {
+            if ((RAND!=2)&& (testTextView.getText()!="TRUE!") && (testTextView.getText()!="FALSE!")) {
             testTextView.setText("FALSE!");
+            TextView2.setText("0");
+            }
         }
+
     }
 
     public void onClick3(View v)
     {
-        if (RAND == 3)
+        if ((RAND == 3) && (testTextView.getText()!="TRUE!") && (testTextView.getText()!="FALSE!"))
         {
             testTextView.setText("TRUE!");
+            t2++;
+            TextView2.setText(Integer.toString(t2));
         }else {
-            testTextView.setText("FALSE!");
+            if ((RAND!=3) && (testTextView.getText()!="TRUE!") && (testTextView.getText()!="FALSE!")){
+                testTextView.setText("FALSE!");
+                TextView2.setText("0");
+            }
         }
+
     }
+
 }
