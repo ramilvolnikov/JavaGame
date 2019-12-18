@@ -9,6 +9,8 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import java.util.Random;
+import android.view.View;
 
 public class MainActivity extends Activity {
     private TextView testTextView;
@@ -59,6 +61,7 @@ public class MainActivity extends Activity {
         }
     };
 
+    int RAND;
 //Expression generation and text assignment
     private void ExprtoText(String s){
         testTextView = (TextView) findViewById(R.id.textView);
@@ -68,21 +71,31 @@ public class MainActivity extends Activity {
         Integer textInTV2 = Integer.parseInt(TextView2.getText().toString());
         TextView2.setText(Integer.toString(textInTV2 + 1));
         String d;
+        final Random random = new Random();
+        int rand = random.nextInt(3) + 1;
         Integer is = Integer.parseInt(s);;
-        d = (DecToBin(is));
+        if (rand == 1) {
+            d = (DecToBin(is));
+        }else {d = (DecToBin(is+1));}
         b1 = (Button)findViewById(R.id.button1);
         //b1.setTag(1);
         b1.setText(d);
 
+        if (rand == 2) {
         d = (DecToOctal(is));
+        }else {d = (DecToOctal(is+1));}
         Button b2 = (Button)findViewById(R.id.button2);
         //b2.setTag(1);
         b2.setText(d);
 
-        d = (DecToHex(is));
+        if (rand == 3) {
+            d = (DecToHex(is));
+        } else {d = (DecToHex(is+1));}
         Button b3 = (Button)findViewById(R.id.button3);
         //b3.setTag(1);
         b3.setText(d);
+
+        RAND = rand;
     }
 
 
@@ -146,4 +159,33 @@ public class MainActivity extends Activity {
         return "-1";
     }
 
+    public void onClick1(View v)
+    {
+        if (RAND == 1)
+        {
+            testTextView.setText("TRUE!");
+        }else {
+            testTextView.setText("FALSE!");
+        }
+    }
+
+    public void onClick2(View v)
+    {
+        if (RAND == 2)
+        {
+            testTextView.setText("TRUE!");
+        }else {
+            testTextView.setText("FALSE!");
+        }
+    }
+
+    public void onClick3(View v)
+    {
+        if (RAND == 3)
+        {
+            testTextView.setText("TRUE!");
+        }else {
+            testTextView.setText("FALSE!");
+        }
+    }
 }
