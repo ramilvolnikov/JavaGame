@@ -15,6 +15,7 @@ import android.view.View;
 public class MainActivity extends Activity {
     private TextView testTextView;
     private TextView TextView2;
+    private TextView TextView3;
     private Button b1;
     private Button b2;
     private Button b3;
@@ -63,14 +64,24 @@ public class MainActivity extends Activity {
 
     int RAND;
     Integer t2;
+    Integer t3;
 //Expression generation and text assignment
     private void ExprtoText(String s){
         testTextView = (TextView) findViewById(R.id.textView);
         //testTextView.setTag(1);
         testTextView.setText(s);
         TextView2 = (TextView) findViewById(R.id.textView2);
+        TextView3 = (TextView) findViewById(R.id.textView3);
         Integer textInTV2 = Integer.parseInt(TextView2.getText().toString());
+        Integer textInTV3 = Integer.parseInt(TextView3.getText().toString());
         t2 = textInTV2;
+        t3 = textInTV3;
+        if (t2>t3)
+        {
+            t3 = t2;
+            TextView3.setText(Integer.toString(t3));
+
+        }
         //TextView2.setText(Integer.toString(textInTV2 + 1));
         String d;
         final Random random = new Random();
