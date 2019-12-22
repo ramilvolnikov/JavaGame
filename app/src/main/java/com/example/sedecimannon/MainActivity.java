@@ -29,8 +29,7 @@ public class MainActivity extends Activity {
         Thread thread = new Thread(runnable);
         thread.start();
 
-//TODO: create for this single function.
-// Maybe set local variable for time and connect with gradientlists
+
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linear_layout);
 
         AnimationDrawable animationDrawable = (AnimationDrawable) linearLayout.getBackground();
@@ -160,8 +159,7 @@ public class MainActivity extends Activity {
     }
 
 
-    //TODO: DO IT!!!!!!!!!!!!!
-    // WTF? WHAT SHOULD I DO?
+
     private String DecToBin (String dec){
         return "-1";
     }
